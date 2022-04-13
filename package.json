@@ -2,30 +2,23 @@
     "name": "books-api",
     "version": "1.0.0",
     "engines": {
-        "node": "14.18.1"
-      },
+      "node": "16.13.2"
+    },
     "description": "",
     "main": "server.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js",
-        "dev": "nodemon server"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/drfudd2001/books-api.git"
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "node server.js"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/drfudd2001/books-api/issues"
-    },
-    "homepage": "https://github.com/drfudd2001/books-api#readme",
     "dependencies": {
-        "cors": "^2.8.5",
-        "dotenv": "^16.0.0",
-        "express": "^4.17.3",
-        "mongoose": "^6.2.8"
+      "dotenv": "^16.0.0",
+      "express": "^4.17.3",
+      "express-react-views": "^0.11.0",
+      "method-override": "^3.0.0",
+      "mongoose": "^6.2.8",
+      "react": "^16.14.0"
     }
-}
+  }

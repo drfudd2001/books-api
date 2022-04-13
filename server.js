@@ -1,29 +1,29 @@
-// Express
-const express = require("express");
-const app = express();
-require("dotenv").config();
+// DEPENDENCIES
+const express = require('express')
+const mongoose = require('mongoose')
 
-// Allow cross origin requests
-const cors = require("cors");
-app.use(cors());
-// Parser
-app.use(express.urlencoded({extended: true}));
+// CONFIGURATION
+require('dotenv').config()
+const PORT = process.env.PORT
+const app = express()
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true}, 
+  () => { console.log('connected to mongo: ', process.env.MONGO_URI) }
+)
+
+// MIDDLEWARE
+app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
-// Mongoose
-const mongoose = require("mongoose");
-mongoose
-    .connect(process.env.MONGO_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
-    .then(() => console.log("Connected to Mongo: ", process.env.MONGO_URI));
+// Languages: 
+const booksController = require('./controllers/books_controller.js')
+app.use('/books', booksController)
 
-// Routes
-app.use("/books", require("./controllers/books"));
+// ROUTES
+app.get('/', (req, res) => {
+  res.send('Welcome to the Books API')
+})
 
-app.get("/", (req, res) => {
-    res.send("Hello Books");
-});
-
-app.listen(process.env.PORT)
+// LISTEN
+app.listen(PORT, () => {
+  console.log('Greetings! From port: ', PORT);
+})
